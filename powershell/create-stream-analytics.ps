@@ -1,0 +1,17 @@
+$currentPath = "C:\Users\yem\Documents\GitHub\Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring\powershell\"
+$jobName = "connectfactoryiothubstreamingjob"
+$resourceGroup = "boilerplate-resgrp2"
+$jobDefinitionFile = "\JobDef.json"
+New-AzStreamAnalyticsJob `
+  -ResourceGroupName $resourceGroup `
+  -File $jobDefinitionFile `
+  -Name $jobName `
+  -Force
+
+$jobInputName = "IoTHubInput"
+$jobInputDefinitionFile = "$currentPath\JobInputDefinition.json"
+New-AzStreamAnalyticsInput `
+  -ResourceGroupName $resourceGroup `
+  -JobName $jobName `
+  -File $jobInputDefinitionFile `
+  -Name $jobInputName

@@ -1,0 +1,28 @@
+{
+    "properties": {
+        "datasource": {
+            "type": "Microsoft.Storage/Blob",
+            "properties": {
+                "storageAccounts": [
+                    {
+                      "accountName": "connectfactorystorage",
+                      "accountKey": "EJ5SYSvqyI/xHsmI6+UJZDAt7WaMITpoF6Yc6vKR3kIDUUKx6bhkk2EBej9K31oSUwIXUPgGnjUIfErYKxqYcw=="
+                    }
+                ],
+                "container": "connectfactorycontainer",
+                "pathPattern": "output/",
+                "dateFormat": "yyyy/MM/dd",
+                "timeFormat": "HH"
+            }
+        },
+        "serialization": {
+            "type": "Json",
+            "properties": {
+                "encoding": "UTF8",
+                "format": "LineSeparated"
+            }
+        }
+    },
+    "name": "BlobOutput",
+    "type": "Microsoft.StreamAnalytics/streamingjobs/outputs"
+}

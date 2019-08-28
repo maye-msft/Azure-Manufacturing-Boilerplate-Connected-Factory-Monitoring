@@ -1,0 +1,16 @@
+{
+    "properties": {
+      "datasource": {
+        "type": "Microsoft.Sql/Server/Database",
+        "properties": {
+          "server": "connectfactorysqlserver2.database.windows.net",
+          "database": "connectfactorysqldatabase2",
+          "user": "myadmin",
+          "password": "",
+          "table": "connectedfactorydata"
+        }
+      }
+    },
+    "name": "SQLDBOutput2",
+    "type": "Microsoft.StreamAnalytics/streamingjobs/outputs"
+  }

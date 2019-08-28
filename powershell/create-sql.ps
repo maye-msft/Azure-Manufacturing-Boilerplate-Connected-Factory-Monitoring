@@ -1,0 +1,17 @@
+$sqlserverName = "connectfactorysqlserver2"
+$sqldatabaseName = "connectfactorysqldatabase2"
+$resourceGroup = "boilerplate-resgrp2"
+$location = "southeastasia"
+New-AzSqlServer -ResourceGroupName $resourceGroup `
+    -Location $location `
+    -ServerName $sqlserverName `
+    -ServerVersion "12.0" `
+    -SqlAdministratorCredentials (Get-Credential)
+
+New-AzSqlDatabase -ResourceGroupName $resourceGroup  `
+    -ServerName $sqlserverName `
+    -DatabaseName $sqldatabaseName `
+    -Edition "GeneralPurpose" `
+    -Vcore 1 `
+    -ComputeGeneration "Gen5" `
+    -ComputeModel Serverless
