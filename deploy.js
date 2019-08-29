@@ -109,7 +109,7 @@ const streamAnalyticsBlobOutputDefinition =
 }
 
 
-const streamAnalyticsBlobOutpuDefinitionJsonFile = path.join(__dirname, `/${deployconfig.ProjectName}-StreamAnalyticsBlobOutputDefinition.json`)
+const streamAnalyticsBlobOutpuDefinitionJsonFile = path.join(__dirname, `/${deployconfig.ProjectName}-StreamAnalyticsBlobOutputDefinition-${DeviceId}.json`)
 fs.writeFileSync(streamAnalyticsBlobOutpuDefinitionJsonFile, JSON.stringify(streamAnalyticsBlobOutputDefinition));
 
 const streamAnalyticsSqlOutputDefinition =
@@ -130,6 +130,8 @@ const streamAnalyticsSqlOutputDefinition =
     "type": "Microsoft.StreamAnalytics/streamingjobs/outputs"
 }
 
+const streamAnalyticsSqlOutpuDefinitionJsonFile = path.join(__dirname, `/${deployconfig.ProjectName}-StreamAnalyticsSqlOutputDefinition-${DeviceId}.json`)
+fs.writeFileSync(streamAnalyticsSqlOutpuDefinitionJsonFile, JSON.stringify(streamAnalyticsSqlOutputDefinition));
 
 
 ps.addCommand('echo node-powershell')

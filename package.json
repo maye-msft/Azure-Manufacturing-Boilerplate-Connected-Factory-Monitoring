@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring#readme",
   "dependencies": {
+    "dot": "^1.1.2",
     "node-powershell": "^4.0.0"
   }
 }

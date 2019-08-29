@@ -1,0 +1,23 @@
+$storageAccountName = "connectfactorystorage"
+$resourceGroup = "boilerplate-resgrp2"
+$location = "eastasia"
+
+$storageAccount = New-AzStorageAccount `
+  -ResourceGroupName $resourceGroup `
+  -Name $storageAccountName `
+  -Location $location `
+  -SkuName Standard_LRS `
+  -Kind Storage
+
+$ctx = $storageAccount.Context
+$containerName = "connectfactorycontainer"
+
+New-AzStorageContainer `
+  -Name $containerName `
+  -Context $ctx
+
+$storageAccountKey = (Get-AzStorageAccountKey `
+  -ResourceGroupName $resourceGroup `
+  -Name $storageAccountName).Value[0]
+
+ $storageAccountKey 

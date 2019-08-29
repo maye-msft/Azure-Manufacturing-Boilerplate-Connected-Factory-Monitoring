@@ -1,0 +1,8 @@
+$iotHubName = "connectfactoryiothub"
+New-AzIotHub `
+    -ResourceGroupName $resourceGroup `
+    -Name $iotHubName `
+    -SkuName S1 -Units 1 `
+    -Location "East Asia"
+
+Get-AzIotHub

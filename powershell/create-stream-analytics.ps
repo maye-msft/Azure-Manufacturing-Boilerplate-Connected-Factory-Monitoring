@@ -1,7 +1,7 @@
 $currentPath = "C:\Users\yem\Documents\GitHub\Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring\powershell\"
 $jobName = "connectfactoryiothubstreamingjob"
 $resourceGroup = "boilerplate-resgrp2"
-$jobDefinitionFile = "\JobDef.json"
+$jobDefinitionFile = "$currentPath\JobDef.json"
 New-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -File $jobDefinitionFile `
@@ -15,3 +15,33 @@ New-AzStreamAnalyticsInput `
   -JobName $jobName `
   -File $jobInputDefinitionFile `
   -Name $jobInputName
+
+
+$jobOutputName = "BlobOutput"
+$jobOutputDefinitionFile = "$currentPath\JobOutputDefinitionBlob.json"
+New-AzStreamAnalyticsOutput `
+  -ResourceGroupName $resourceGroup `
+  -JobName $jobName `
+  -File $jobOutputDefinitionFile `
+  -Name $jobOutputName -Force
+
+
+$jobOutputName = "SQLOutput2"
+$jobOutputDefinitionFile = "$currentPath\JobOutputDefinitionSQL.json"
+New-AzStreamAnalyticsOutput `
+  -ResourceGroupName $resourceGroup `
+  -JobName $jobName `
+  -File $jobOutputDefinitionFile `
+  -Name $jobOutputName -Force
+
+$jobOutputName = "PowerBI2"
+$jobOutputDefinitionFile = "$currentPath\JobOutputDefinitionPowerBI.json"
+New-AzStreamAnalyticsOutput `
+  -ResourceGroupName $resourceGroup `
+  -JobName $jobName `
+  -File $jobOutputDefinitionFile `
+  -Name $jobOutputName -Force
+
+Get-AzStreamAnalyticsOutput `
+    -ResourceGroupName $resourceGroup `
+    -JobName $jobName

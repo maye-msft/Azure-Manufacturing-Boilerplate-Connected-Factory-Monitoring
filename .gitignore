@@ -86,3 +86,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+json/JobBlobOutputDefinition.json
+json/JobDefinition.json
+json/JobInputDefinition.json
+json/JobSQLOutputDefinitionDeviceType1.json
+json/JobSQLOutputDefinitionDeviceType2.json
+json/JobTransformationQueryDefinition.json
