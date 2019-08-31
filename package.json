@@ -21,7 +21,14 @@
   },
   "homepage": "https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring#readme",
   "dependencies": {
+    "azure-iot-device": "^1.11.1",
+    "azure-iot-device-mqtt": "^1.10.2",
+    "dateformat": "^3.0.3",
     "dot": "^1.1.2",
-    "node-powershell": "^4.0.0"
+    "dotenv": "^8.1.0",
+    "node-powershell": "^4.0.0",
+    "random": "^2.1.1",
+    "tedious": "^6.3.0",
+    "uuid": "^3.3.3"
   }
 }

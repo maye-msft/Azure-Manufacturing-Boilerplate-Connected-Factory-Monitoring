@@ -44,7 +44,8 @@ New-AzIotHub `
 
 Show-Text "Add IoT Devices" 
 az extension add --name azure-cli-iot-ext
-$deviceskey = @()
+# $deviceskey = @()
+$deviceskeystring = ""
 Foreach ($device in $config.Devices) {
   
     Foreach ($name in $device.Name) {  
@@ -53,11 +54,17 @@ Foreach ($device in $config.Devices) {
         $devicekey = az iot hub device-identity show-connection-string --device-id $name `
                                                   --hub-name $iotHubName `
                                                   --key-type primary `
-                                                  --resource-group $resourceGroupName 
-        $deviceskey += $devicekey.connectionString
+                                                  --resource-group $resourceGroupName `
+                                                  | ConvertFrom-Json
+        # $deviceskey += $devicekey.connectionString
+        $deviceskeystring += $name.toupper()+"_DEVICE_CONNECTION_STRING="+$devicekey.connectionString+"`n"
     }
   
 }
+
+# $deviceskey
+# $deviceskeystring
+Set-Content -Path $currentPath\.env -Value $deviceskeystring
 
 #Get-AzIotHub
 
@@ -101,6 +108,11 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName  `
   -Vcore 1 `
   -ComputeGeneration "Gen5" `
   -ComputeModel Serverless
+
+Add-Content -Path $currentPath\.env -Value "SQLSERVER=$sqlServerName.database.windows.net"
+Add-Content -Path $currentPath\.env -Value "SQLDATABASE=$sqlDatabaseName"
+Add-Content -Path $currentPath\.env -Value "SQLSERVER_USER=$sqluser"
+Add-Content -Path $currentPath\.env -Value "SQLSERVER_PWD=$sqlpwd"
 
 # create stream analytics job 
 Show-Text "Create Stream Analytics Job - $streamAnalyticsJobName" 
@@ -186,7 +198,7 @@ $streamAnalyticsJobBlobOutputDefinition =@"
                     }
                 ],
                 "container": "$storageContainerName",
-                "pathPattern": "output/{DeviceId}",
+                "pathPattern": "output/{DeviceId}/{date}/{time}",
                 "dateFormat": "yyyy/MM/dd",
                 "timeFormat": "HH"
             }
@@ -259,7 +271,11 @@ $query = " SELECT * INTO $streamAnalyticsBlobOutputName FROM $streamAnalyticsInp
 Foreach ($device in $config.Devices) {
   $deviceType = $device.Type
   $outputName = $streamAnalyticsSqlOutputName+$deviceType.tolower()
-  $query += "\n SELECT * INTO $outputName FROM $streamAnalyticsInputName Where DeviceType='$deviceType'"
+  $fields = ""
+  Foreach ($field in $device.Fields) {
+    $fields+=$field.Name+","
+  }
+  $query += "\n SELECT $fields DeviceId INTO $outputName FROM $streamAnalyticsInputName Where DeviceType='$deviceType'"
 }
 
 $streamAnalyticsJobSQLOutputDefinition = @"

@@ -7,8 +7,8 @@
             "Type":"DeviceType1",
             "Name":["Device001","Device002"],
             "Fields":[
-                {"Name":"var001", "Type":"int", "RandomRage":[10,20]},
-                {"Name":"var002", "Type":"float", "RandomRage":[1.0,10.0]},
+                {"Name":"var001", "Type":"int", "RandomRange":[10,20]},
+                {"Name":"var002", "Type":"float", "RandomRange":[1.0,10.0]},
                 {"Name":"var003", "Type":"string", "Length":32, "Options":["Option1","Option2"]},
                 {"Name":"var004", "Type":"boolean"},
                 {"Name":"var005", "Type":"date"},
@@ -19,8 +19,8 @@
             "Type":"DeviceType2",
             "Name":["Device003","Device004"],
             "Fields":[
-                {"Name":"var001", "Type":"int", "RandomRage":[10,20]},
-                {"Name":"var002", "Type":"float", "RandomRage":[1.0,10.0]},
+                {"Name":"var001", "Type":"int", "RandomRange":[10,20]},
+                {"Name":"var002", "Type":"float", "RandomRange":[1.0,10.0]},
                 {"Name":"var003", "Type":"string", "Length":32, "Options":["Option1","Option2"]},
                 {"Name":"var004", "Type":"boolean"},
                 {"Name":"var005", "Type":"date"},
