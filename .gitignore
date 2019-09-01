@@ -92,3 +92,5 @@ json/JobInputDefinition.json
 json/JobSQLOutputDefinitionDeviceType1.json
 json/JobSQLOutputDefinitionDeviceType2.json
 json/JobTransformationQueryDefinition.json
+package-lock.json
+yarn.lock
