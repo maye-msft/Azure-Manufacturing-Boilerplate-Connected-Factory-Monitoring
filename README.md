@@ -6,15 +6,15 @@ This boilerplate is powershell and nodejs script to setup an Azure IoT system fo
 
 ## Before you begin
 
-* #### Install PowerShell
+* ### Install PowerShell
 
 https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-6#powershell-core
 
-* #### Install the Azure CLI
+* ### Install the Azure CLI
 
 https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 
-* #### Install Node
+* ### Install Node
 
 https://nodejs.org/en/download/
 
@@ -60,6 +60,9 @@ Edit deploy.json to add your devices and data to be sent
 ```
 
 ## Run PowerShell - main.ps1
+
+https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/main.ps1
+
 ```shell
 git clone https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring
 cd "Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring"
@@ -80,6 +83,8 @@ The **main.ps1** powershell script create the following resource and configurati
 
 ## Create Table in Azure
 
+https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/createSQLTable.js
+
 ```shell
 npm install
 node ./node/createSQLTable.js
@@ -93,6 +98,8 @@ https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-config
 
 ## Send Events
 
+https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/sendEvent.js
+
 ```shell
 node ./node/sendEvent.js
 ```
@@ -101,8 +108,10 @@ This program sends events every 5 seconds.
 
 ## Quary event data in SQL
 
+https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/queryEvent.js
+
 ```shell
-node ./node/sendEvent.js
+node ./node/queryEvent.js
 ```
 
 This program queries the event data stored in SQL.
