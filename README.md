@@ -72,18 +72,44 @@ The **main.ps1** powershell script create the following resource and configurati
 * Resource Group
 * Azure IoT Hub
 * Azure Stream Analytics
-    * IotHub input 
+    * IotHub input
     * Blob output
     * Azure SQL output
 * Blob Storage and Container
-* Azure SQL Server and Database 
-
+* Azure SQL Server and Database
 
 ## Create Table in Azure
+
 ```shell
 npm install
 node ./node/createSQLTable.js
 ```
+
 The node script create SQL Table in the SQL Server.
 
-An error will occurr as Azure SQL
+An error will occurr as Azure SQL need set firewall for exteral connection.
+
+https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure
+
+## Send Events
+
+```shell
+node ./node/sendEvent.js
+```
+
+This program sends events every 5 seconds.
+
+## Quary event data in SQL
+
+```shell
+node ./node/sendEvent.js
+```
+
+This program queries the event data stored in SQL.
+
+## Known Issues
+
+1. IoTHub input of Streaming Analytics need to manually setup. The input by powershell has an issue on connection string. Please delete iothubinput and manually add one.
+
+2. Azure SQL Database as Streaming Analytics output
+need to set IP firewall rules for Streaming Analytics, go to "Activity log" to find an error message and then set the IP address of Streaming Analytics into SQL Server IP firewall rules.
