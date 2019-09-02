@@ -1,8 +1,12 @@
 # Azure Manufacturing Boilerplate - Connected Factory Monitoring
 
-This boilerplate is powershell and nodejs script to setup an Azure IoT system for collecting data from IoT Device with Azure IoTHub and store data into blob storage and AZure SQL. 
+This boilerplate is powershell and nodejs script to setup an Azure IoT system for collecting data from IoT Device with Azure IoTHub and store data into blob storage and AZure SQL.
 
-**It takes you only 10 minutes to setup an IoT based Connected Factory solution via Azure PaaS. And it costs less than $50 per month as a starter kit.**  
+![architecture diagram](/images/architecture-diagram.PNG)
+
+**It takes you only 10 minutes to setup an IoT based Connected System solution via Azure PaaS. And it costs less than $50 per month as a starter kit.**  
+
+
 
 ## Before you begin
 
@@ -81,7 +85,13 @@ The **main.ps1** powershell script create the following resource and configurati
 * Blob Storage and Container
 * Azure SQL Server and Database
 
-## Create Table in Azure
+The resources generated for example:
+![azure resources](/images/azure-resources.PNG)
+
+The job diagram of Steaming Analytics
+![job diagram](/images/job-diagram.PNG)
+
+## Create Table in Azure SQL
 
 https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/createSQLTable.js
 
@@ -106,6 +116,8 @@ node ./node/sendEvent.js
 
 This program sends events every 5 seconds.
 
+![send event](/images/sendEvent.PNG)
+
 ## Quary event data in SQL
 
 https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/queryEvent.js
@@ -116,9 +128,12 @@ node ./node/queryEvent.js
 
 This program queries the event data stored in SQL.
 
-## Known Issues
+![query event](/images/queryEvent.PNG)
 
-1. IoTHub input of Streaming Analytics need to manually setup. The input by powershell has an issue on connection string. Please delete iothubinput and manually add one.
+## Blob Storage Output
+The event data also export to Blob Container
+![storage output](/images/storageoutput.PNG)
 
-2. Azure SQL Database as Streaming Analytics output
-need to set IP firewall rules for Streaming Analytics, go to "Activity log" to find an error message and then set the IP address of Streaming Analytics into SQL Server IP firewall rules.
+## Warning !!!
+
+**This powershell script will generate a set of json files and one .env file, which contains security keys.**

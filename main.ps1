@@ -42,6 +42,9 @@ New-AzIotHub `
     -Location $location
 
 
+$iothubKey = Get-AzIotHubKey -ResourceGroupName "$resourceGroupName"  -Name "$iotHubName" `
+                    -KeyName "iothubowner" | ConvertTo-Json | ConvertFrom-Json 
+
 Show-Text "Add IoT Devices" 
 az extension add --name azure-cli-iot-ext
 # $deviceskey = @()
@@ -98,7 +101,11 @@ New-AzSqlServer -ResourceGroupName $resourceGroupName `
   -Location $location `
   -ServerName $sqlServerName `
   -ServerVersion "12.0" `
-  -SqlAdministratorCredentials $credential
+  -SqlAdministratorCredentials $credential 
+
+New-AzSqlServerFirewallRule -ResourceGroupName "$resourceGroupName" `
+                      -ServerName "$sqlServerName" -AllowAllAzureIPs
+
 
 Show-Text "Create Azure SQL Database - $sqlServerName" 
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName  `
@@ -142,6 +149,7 @@ New-AzStreamAnalyticsJob `
   -Force
 
 # create stream analytics input
+$accesspolicykey = $iothubKey.PrimaryKey
 Show-Text "Create Stream Analytics Input - $streamAnalyticsInputName" 
 $streamAnalyticsJobInputDefinition =@"
 {
@@ -152,7 +160,7 @@ $streamAnalyticsJobInputDefinition =@"
           "properties": {
               "iotHubNamespace": "$iotHubName",
               "sharedAccessPolicyName": "iothubowner",
-              "sharedAccessPolicyKey": "accesspolicykey",
+              "sharedAccessPolicyKey": "$accesspolicykey",
               "endpoint": "messages/events",
               "consumerGroupName": "`$Default"
               }
@@ -298,5 +306,15 @@ New-AzStreamAnalyticsTransformation `
   -File $currentPath\json\JobTransformationQueryDefinition.json `
   -Name $streamAnalyticsTransformName -Force
 
+
+npm install
+node ./node/createSQLTable.js
+
+
+Start-AzStreamAnalyticsJob `
+  -ResourceGroupName $resourceGroupName `
+  -Name $streamAnalyticsJobName `
+  -OutputStartMode 'JobStartTime'
+  
 Show-Text "Delete Resource Group - $resourceGroupName" 
 az group delete --name $resourceGroupName
