@@ -1,6 +1,6 @@
 # Azure Manufacturing Boilerplate - Connected Factory Monitoring
 
-This boilerplate is powershell and nodejs script to setup an Azure IoT system for collecting data from IoT Device with Azure IoTHub and store data into blob storage and AZure SQL.
+This boilerplate is set of powershell and nodejs scripts to setup an Azure IoT system for collecting data from IoT Device with Azure IoTHub and store data into blob storage and AZure SQL.
 
 ![architecture diagram](/images/architecture-diagram.PNG)
 
@@ -137,3 +137,10 @@ The event data also export to Blob Container
 ## Warning !!!
 
 **This powershell script will generate a set of json files and one .env file, which contains security keys.**
+
+### TODO
+
+* Azure Function as Azure SQL aggregation and management trigger
+* Azure App Service for visualization
+* PowerBI integration
+* Azure AD integration
