@@ -308,9 +308,8 @@ New-AzStreamAnalyticsTransformation `
 
 
 npm install
-node ./node/createSQLTable.js
 
-
+Show-Text "Start Stream Analytics Job - $streamAnalyticsJobName" 
 Start-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroupName `
   -Name $streamAnalyticsJobName `

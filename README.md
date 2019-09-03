@@ -71,6 +71,7 @@ https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-M
 git clone https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring
 cd "Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring"
 powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ./main.ps1
 ```
 
@@ -134,9 +135,21 @@ This program queries the event data stored in SQL.
 The event data also export to Blob Container
 ![storage output](/images/storageoutput.PNG)
 
-## Warning !!!
+## Cost of Azure Consumption
 
-**This powershell script will generate a set of json files and one .env file, which contains security keys.**
+Services | Edition | Price 
+------------ | ------------- | ----------------
+Azure IoT Hub | Standard Tier, S1: Unlimited devices, 400,000 msgs/day | $25/Month
+Azure Stream Analytics | 1 Standard streaming units | $0.127/hour 
+Blob Storage and Container | Block Blob Storage, Blob Storage,  | $0.02/GB/Month $0.05/10,000 Write
+Azure SQL Server and Database | Single Database, vCore Purchase Model | $4.73/Month
+
+
+## !!! Warning !!!
+
+**This powershell script will generate a set of json files and one .env file, which contains security keys. Please keep them Azure Key Vault in production or remove them after running a demo.**
+
+The last command of teh pwoershell is to clean the resources, if we want to keep them please select "n".
 
 ### TODO
 
