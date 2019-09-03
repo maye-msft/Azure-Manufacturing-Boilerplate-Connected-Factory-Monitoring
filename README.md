@@ -89,7 +89,7 @@ The **main.ps1** powershell script create the following resource and configurati
 The resources generated for example:
 ![azure resources](/images/azure-resources.PNG)
 
-The job diagram of Steaming Analytics
+The job diagram of Stream Analytics
 ![job diagram](/images/job-diagram.PNG)
 
 ## Create Table in Azure SQL
