@@ -65,7 +65,7 @@ Edit deploy.json to add your devices and data to be sent
 
 ## Run PowerShell - main.ps1
 
-https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/main.ps1
+[main.ps1](https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/main.ps1)
 
 ```shell
 git clone https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring
@@ -94,7 +94,7 @@ The job diagram of Steaming Analytics
 
 ## Create Table in Azure SQL
 
-https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/createSQLTable.js
+[createSQLTable.js](https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/createSQLTable.js)
 
 ```shell
 npm install
@@ -109,7 +109,7 @@ https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-config
 
 ## Send Events
 
-https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/sendEvent.js
+[sendEvent.js](https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/sendEvent.js)
 
 ```shell
 node ./node/sendEvent.js
@@ -121,7 +121,7 @@ This program sends events every 5 seconds.
 
 ## Quary event data in SQL
 
-https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/queryEvent.js
+[queryEvent.js](https://github.com/maye-msft/Azure-Manufacturing-Boilerplate-Connected-Factory-Monitoring/blob/master/node/queryEvent.js)
 
 ```shell
 node ./node/queryEvent.js
